@@ -7,11 +7,15 @@ qrImg = container.querySelector(".qr-code .img");
 generateBtn.addEventListener('click', ()=> {
     let qrValue = qrInput.value;
     if(!qrValue){
-        alert('Insira uma URL ou texto!')
+        Swal.fire({
+            icon: 'error',
+            popup: "swal2-border-radius",
+            text: 'Digite algum texto ou URL!'
+          })
         return;
     }
     generateBtn.innerText = "Gerando QR Code...";
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`;
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qrValue}`;
     qrImg.addEventListener('load', () => {
         generateBtn.innerText = "Gerar QR Code";
         container.classList.add('active');
